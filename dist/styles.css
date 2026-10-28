@@ -63,9 +63,9 @@ button { font: inherit; }
 
 .journey-section { background: var(--yellow); border-bottom: 1px solid var(--ink); }
 .journey-lead { max-width: 1080px; margin: -2rem 0 6rem auto; font-size: clamp(1.65rem, 3.2vw, 3.25rem); line-height: 1.08; font-weight: 750; letter-spacing: -.03em; }
-.journey-track { list-style: none; padding: 0; margin: 0; border-top: 2px solid var(--ink); }
-.journey-track li { display: grid; grid-template-columns: .35fr .75fr 1.9fr; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid var(--ink); }
-.journey-track li::before { content: "0" counter(list-item); font-family: var(--display); font-size: 1.5rem; }
+.journey-track { list-style: none; counter-reset: journey-step; padding: 0; margin: 0; border-top: 2px solid var(--ink); }
+.journey-track li { counter-increment: journey-step; display: grid; grid-template-columns: .35fr .75fr 1.9fr; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid var(--ink); }
+.journey-track li::before { content: "0" counter(journey-step); font-family: var(--display); font-size: 1.5rem; }
 .journey-track span { font-size: .7rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; padding-top: .35rem; }
 .journey-track h3 { margin: 0 0 .55rem; font-family: var(--display); font-size: clamp(2rem, 3.5vw, 3.7rem); line-height: .95; text-transform: uppercase; }
 .journey-track p { max-width: 720px; margin: 0; font-size: 1.03rem; line-height: 1.6; }
