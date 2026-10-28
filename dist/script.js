@@ -21,6 +21,9 @@ if (!reducedMotion) {
     { threshold: 0.12, rootMargin: "0px 0px -7% 0px" },
   );
   revealTargets.forEach((element) => revealObserver.observe(element));
+  window.setTimeout(() => {
+    revealTargets.forEach((element) => element.classList.add("is-visible"));
+  }, 1200);
 
   const portrait = document.querySelector(".portrait img");
   const updatePortrait = () => {
