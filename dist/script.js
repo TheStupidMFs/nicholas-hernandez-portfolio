@@ -1,36 +1,5 @@
-document.querySelector("#year").textContent = new Date().getFullYear();
-
-const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-if (!reducedMotion) {
-  document.documentElement.classList.add("motion-ready");
-
-  const revealTargets = document.querySelectorAll(
-    ".statement > *, .section-head > *, .project > *, .archive-grid figure, .record-list > div, .details > div, .contact > *",
-  );
-  revealTargets.forEach((element) => element.setAttribute("data-reveal", ""));
-
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
-      });
-    },
-    { threshold: 0.12, rootMargin: "0px 0px -7% 0px" },
-  );
-  revealTargets.forEach((element) => revealObserver.observe(element));
-  window.setTimeout(() => {
-    revealTargets.forEach((element) => element.classList.add("is-visible"));
-  }, 1200);
-
-  const portrait = document.querySelector(".portrait img");
-  const updatePortrait = () => {
-    if (!portrait || window.innerWidth < 900) return;
-    const distance = Math.min(window.scrollY * 0.035, 18);
-    portrait.style.transform = `translateY(${distance}px) scale(1.015)`;
-  };
-  window.addEventListener("scroll", updatePortrait, { passive: true });
-  updatePortrait();
-}
+document.querySelector("#year").textContent=new Date().getFullYear();
+const menuButton=document.querySelector(".menu-toggle"),menu=document.querySelector("#menu");
+menuButton.addEventListener("click",()=>{const open=menu.classList.toggle("open");menuButton.setAttribute("aria-expanded",String(open));document.body.classList.toggle("menu-open",open)});
+menu.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{menu.classList.remove("open");menuButton.setAttribute("aria-expanded","false");document.body.classList.remove("menu-open")}));
+if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("motion-ready");const targets=document.querySelectorAll(".intro > *, .section-title > *, .project > *, .archive figure, .experience header > *, .experience-list article, .skills > *, .contact > *");targets.forEach(el=>el.setAttribute("data-reveal",""));const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(!entry.isIntersecting)return;entry.target.classList.add("is-visible");observer.unobserve(entry.target)}),{threshold:.08,rootMargin:"0px 0px -5% 0px"});targets.forEach(el=>observer.observe(el));window.setTimeout(()=>targets.forEach(el=>el.classList.add("is-visible")),1500)}
