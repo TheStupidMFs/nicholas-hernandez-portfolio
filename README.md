@@ -9,4 +9,4 @@ A multidisciplinary creative portfolio spanning brand identity, websites, event 
 - SteeJays Entertainment
 - Duke Bakery
 
-Built as a lightweight, responsive static site.
+Built as a lightweight, responsive static site. The production-ready website is located in `dist/`.
